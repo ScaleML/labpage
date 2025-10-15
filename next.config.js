@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,  // Required for static export
   },
-  // Uncomment and configure basePath if deploying to a subdirectory
-  // basePath: '/your-repo-name',
+  // No basePath needed for root domain (scaleml.github.io)
+  // basePath: '/labpage',
   webpack: (config, { isServer }) => {
     // Fix for 'fs' module on client side
     if (!isServer) {
