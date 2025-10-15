@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',  // Enable static export for GitHub Pages
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    unoptimized: true,  // Required for static export
   },
+  // Uncomment and configure basePath if deploying to a subdirectory
+  // basePath: '/your-repo-name',
   webpack: (config, { isServer }) => {
     // Fix for 'fs' module on client side
     if (!isServer) {
