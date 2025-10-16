@@ -18,15 +18,13 @@ export default function NewsCard({ post }: NewsCardProps) {
       className="glass rounded-2xl overflow-hidden hover-lift"
     >
       {/* Image */}
-      {post.image && (
-        <div className="relative h-48 overflow-hidden">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-        </div>
-      )}
+      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-50 to-primary-50 flex items-center justify-center">
+        <img
+          src={post.image || '/assets/scaleml-logo.svg'}
+          alt={post.title}
+          className={`${post.image ? 'w-full h-full object-cover group-hover:scale-110' : 'w-2/3 h-2/3 object-contain'} transition-transform duration-500`}
+        />
+      </div>
 
       {/* Content */}
       <div className="p-6">

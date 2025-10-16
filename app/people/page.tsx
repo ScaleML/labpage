@@ -4,10 +4,14 @@ import PersonCard from '@/components/PersonCard';
 export default function PeoplePage() {
   const people = getPeople();
 
-  // Group people by role
-  const faculty = people.filter(p => p.role.toLowerCase().includes('professor') || p.role.toLowerCase().includes('investigator'));
-  const students = people.filter(p => p.role.toLowerCase().includes('student'));
-  const staff = people.filter(p => !p.role.toLowerCase().includes('professor') && !p.role.toLowerCase().includes('investigator') && !p.role.toLowerCase().includes('student'));
+  // Separate current members and alumni
+  const currentMembers = people.filter(p => !p.alumni);
+  const alumniMembers = people.filter(p => p.alumni);
+
+  // Group current members by role
+  const faculty = currentMembers.filter(p => p.role.toLowerCase().includes('professor') || p.role.toLowerCase().includes('investigator'));
+  const students = currentMembers.filter(p => p.role.toLowerCase().includes('student'));
+  const staff = currentMembers.filter(p => !p.role.toLowerCase().includes('professor') && !p.role.toLowerCase().includes('investigator') && !p.role.toLowerCase().includes('student'));
 
   return (
     <div className="min-h-screen pt-32 pb-20">
@@ -52,6 +56,18 @@ export default function PeoplePage() {
             <h2 className="text-3xl font-bold mb-8">Staff</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {staff.map((person) => (
+                <PersonCard key={person.slug} person={person} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Alumni */}
+        {alumniMembers.length > 0 && (
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Alumni</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {alumniMembers.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}
             </div>

@@ -1,7 +1,12 @@
 import { getPeople, getContentBySlug, Person } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import { Mail, ExternalLink, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Twitter as X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeHighlight from 'rehype-highlight';
+import 'katex/dist/katex.min.css';
+import 'highlight.js/styles/github-dark.css';
 
 export async function generateStaticParams() {
   const people = getPeople();
@@ -92,13 +97,13 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                 )}
                 {person.twitter && (
                   <a
-                    href={`https://twitter.com/${person.twitter}`}
+                    href={`https://x.com/${person.twitter}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
                   >
-                    <Twitter size={18} className="mr-2" />
-                    Twitter
+                    <X size={18} className="mr-2" />
+                    X (Twitter)
                   </a>
                 )}
               </div>
@@ -108,7 +113,12 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <div className="glass rounded-2xl p-8 prose prose-lg max-w-none">
-          <ReactMarkdown>{person.content}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex, rehypeHighlight]}
+          >
+            {person.content}
+          </ReactMarkdown>
         </div>
       </div>
     </div>

@@ -1,6 +1,11 @@
 import { getProjects, getContentBySlug, Project } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeHighlight from 'rehype-highlight';
+import 'katex/dist/katex.min.css';
+import 'highlight.js/styles/github-dark.css';
 import { Calendar } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -22,28 +27,38 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          {project.image && (
-            <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-                {project.date && (
-                  <div className="flex items-center text-lg">
-                    <Calendar size={20} className="mr-2" />
-                    {new Date(project.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                    })}
-                  </div>
-                )}
+          <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
+            {project.image ? (
+              <>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
+                  {project.date && (
+                    <div className="flex items-center text-lg">
+                      <Calendar size={20} className="mr-2" />
+                      {new Date(project.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                      })}
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="bg-gradient-to-br from-slate-50 to-primary-50 flex items-center justify-center w-full h-full">
+                <img
+                  src="/assets/scaleml-logo.svg"
+                  alt={project.title}
+                  className="w-1/2 h-1/2 object-contain"
+                />
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
           {!project.image && (
             <div className="mb-8">
@@ -79,7 +94,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <div className="glass rounded-2xl p-8 prose prose-lg max-w-none">
-          <ReactMarkdown>{project.content}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex, rehypeHighlight]}
+          >
+            {project.content}
+          </ReactMarkdown>
         </div>
       </div>
     </div>

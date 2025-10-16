@@ -1,5 +1,5 @@
-import { getNews, getContentBySlug, NewsPost } from '@/lib/content';
-import { notFound } from 'next/navigation';
+import { getBlogs, getContentBySlug, BlogPost } from '@/lib/content';
+import { notFound, redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -10,17 +10,22 @@ import { Calendar, User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
-  const news = getNews();
-  return news.map((post) => ({
+  const blogs = getBlogs();
+  return blogs.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default function NewsPostPage({ params }: { params: { slug: string } }) {
-  const post = getContentBySlug<NewsPost>('news', params.slug);
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = getContentBySlug<BlogPost>('blogs', params.slug);
 
   if (!post) {
     notFound();
+  }
+
+  // If the post has an external URL, redirect to it
+  if (post.externalUrl) {
+    redirect(post.externalUrl);
   }
 
   return (
@@ -28,11 +33,11 @@ export default function NewsPostPage({ params }: { params: { slug: string } }) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link
-          href="/news"
+          href="/blog"
           className="inline-flex items-center text-primary-600 hover:text-accent-600 mb-8 font-semibold transition-colors"
         >
           <ArrowLeft className="mr-2" size={20} />
-          Back to News
+          Back to Blog
         </Link>
 
         {/* Header */}

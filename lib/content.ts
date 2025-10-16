@@ -17,6 +17,7 @@ export interface Person {
   twitter?: string;
   github?: string;
   linkedin?: string;
+  alumni?: boolean;
   content: string;
 }
 
@@ -38,6 +39,17 @@ export interface NewsPost {
   excerpt: string;
   author?: string;
   image?: string;
+  content: string;
+}
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  author?: string;
+  image?: string;
+  externalUrl?: string;
   content: string;
 }
 
@@ -97,6 +109,11 @@ export function getProjects(): Project[] {
 export function getNews(): NewsPost[] {
   const news = getContentByType<NewsPost>('news');
   return news.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getBlogs(): BlogPost[] {
+  const blogs = getContentByType<BlogPost>('blogs');
+  return blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getPublications(): Publication[] {

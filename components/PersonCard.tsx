@@ -1,7 +1,7 @@
 'use client';
 
 import { Person } from '@/lib/content';
-import { Mail, ExternalLink, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Twitter as X } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -88,13 +88,13 @@ export default function PersonCard({ person }: PersonCardProps) {
           )}
           {person.twitter && (
             <a
-              href={`https://twitter.com/${person.twitter}`}
+              href={`https://x.com/${person.twitter}`}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
-              title="Twitter"
+              title="X (Twitter)"
             >
-              <Twitter size={18} />
+              <X size={18} />
             </a>
           )}
         </div>

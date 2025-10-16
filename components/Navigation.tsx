@@ -22,7 +22,8 @@ export default function Navigation() {
     { href: '/research', label: 'Research' },
     { href: '/publications', label: 'Publications' },
     { href: '/news', label: 'News' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/blog', label: 'Blog' },
+    // { href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -36,13 +37,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-white font-bold text-xl">RL</span>
+          <Link href="/" className="flex items-center group">
+            <div className="h-14 transform group-hover:scale-105 transition-transform duration-300">
+              <img
+                src="/assets/scaleml-logo.svg"
+                alt="ScaleML Lab"
+                className="h-full w-auto"
+              />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              Research Lab
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

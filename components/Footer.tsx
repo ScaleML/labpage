@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Github, Twitter as X, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,16 +10,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-              Research Lab
-            </h3>
+            <div className="mb-4">
+              <img
+                src="/assets/scaleml-logo.svg"
+                alt="ScaleML Lab"
+                className="h-16 w-auto brightness-0 invert"
+              />
+            </div>
             <p className="text-slate-300 mb-4">
               Advancing the frontiers of artificial intelligence and machine learning
               through innovative research and collaboration.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com"
+                href="https://github.com/ScaleML"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-slate-700 rounded-lg hover:bg-primary-600 transition-colors duration-200"
@@ -27,12 +31,12 @@ export default function Footer() {
                 <Github size={20} />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-slate-700 rounded-lg hover:bg-primary-600 transition-colors duration-200"
               >
-                <Twitter size={20} />
+                <X size={20} />
               </a>
               <a
                 href="https://linkedin.com"
@@ -42,12 +46,12 @@ export default function Footer() {
               >
                 <Linkedin size={20} />
               </a>
-              <a
+              {/* <a
                 href="mailto:lab@example.com"
                 className="p-2 bg-slate-700 rounded-lg hover:bg-primary-600 transition-colors duration-200"
               >
                 <Mail size={20} />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -67,7 +71,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/people" className="text-slate-300 hover:text-primary-400 transition-colors">
-                  Team
+                  People
                 </Link>
               </li>
               <li>
@@ -82,20 +86,20 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-slate-300">
-              <li>Research Lab</li>
-              <li>University Name</li>
-              <li>City, State 12345</li>
-              <li className="mt-4">
+              <li>ScaleML Lab</li>
+              <li>University of Illinois Urbana-Champaign</li>
+              <li>Urbana, IL 61801</li>
+              {/* <li className="mt-4">
                 <a href="mailto:lab@example.com" className="hover:text-primary-400 transition-colors">
-                  lab@example.com
+                  scale-ml@illinois.edu
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-          <p>&copy; {currentYear} Research Lab. All rights reserved.</p>
+          <p>&copy; {currentYear} ScaleML Lab. All rights reserved.</p>
         </div>
       </div>
     </footer>
