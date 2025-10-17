@@ -4,9 +4,11 @@ import PersonCard from '@/components/PersonCard';
 export default function PeoplePage() {
   const people = getPeople();
 
-  // Separate current members and alumni
-  const currentMembers = people.filter(p => !p.alumni);
-  const alumniMembers = people.filter(p => p.alumni);
+  // Separate current members and alumni, filter out incomplete profiles
+  // For alumni, bio is optional (can use content instead)
+  const validPeople = people.filter(p => p.name && p.role && (p.bio || p.content));
+  const currentMembers = validPeople.filter(p => !p.alumni);
+  const alumniMembers = validPeople.filter(p => p.alumni);
 
   // Group current members by role
   const faculty = currentMembers.filter(p => p.role.toLowerCase().includes('professor') || p.role.toLowerCase().includes('investigator'));
@@ -28,9 +30,9 @@ export default function PeoplePage() {
 
         {/* Faculty */}
         {faculty.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Faculty</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Faculty</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {faculty.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}
@@ -40,9 +42,9 @@ export default function PeoplePage() {
 
         {/* Students */}
         {students.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Students</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Students</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {students.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}
@@ -52,9 +54,9 @@ export default function PeoplePage() {
 
         {/* Staff */}
         {staff.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Staff</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Staff</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {staff.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}
@@ -64,9 +66,9 @@ export default function PeoplePage() {
 
         {/* Alumni */}
         {alumniMembers.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Alumni</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Alumni</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {alumniMembers.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}

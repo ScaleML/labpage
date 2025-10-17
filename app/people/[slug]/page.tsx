@@ -1,6 +1,6 @@
 import { getPeople, getContentBySlug, Person } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import { Mail, ExternalLink, Github, Linkedin, Twitter as X } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Twitter as X, GraduationCap } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -71,6 +71,17 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                   >
                     <ExternalLink size={18} className="mr-2" />
                     Website
+                  </a>
+                )}
+                {person.scholar && (
+                  <a
+                    href={person.scholar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                  >
+                    <GraduationCap size={18} className="mr-2" />
+                    Google Scholar
                   </a>
                 )}
                 {person.github && (

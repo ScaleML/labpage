@@ -1,7 +1,7 @@
 'use client';
 
 import { Person } from '@/lib/content';
-import { Mail, ExternalLink, Github, Linkedin, Twitter as X } from 'lucide-react';
+import { Mail, ExternalLink, Github, Linkedin, Twitter as X, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,9 @@ interface PersonCardProps {
 }
 
 export default function PersonCard({ person }: PersonCardProps) {
+  // Use bio if available, otherwise use first part of content
+  const displayBio = person.bio || person.content.split('\n')[0];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -18,16 +21,18 @@ export default function PersonCard({ person }: PersonCardProps) {
       className="glass rounded-2xl overflow-hidden hover-lift group"
     >
       {/* Image */}
-      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary-100 to-accent-100">
+      <div className="flex justify-center pt-3 pb-2">
         {person.image ? (
-          <img
-            src={person.image}
-            alt={person.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
+          <div className="w-24 h-24 rounded-full overflow-hidden bg-white">
+            <img
+              src={person.image}
+              alt={person.name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-6xl font-bold text-primary-300">
+          <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gradient-to-br from-primary-100 to-accent-100">
+            <span className="text-2xl font-bold text-primary-300">
               {person.name.split(' ').map(n => n[0]).join('')}
             </span>
           </div>
@@ -35,22 +40,24 @@ export default function PersonCard({ person }: PersonCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-2xl font-bold mb-2 group-hover:text-primary-600 transition-colors">
-          {person.name}
-        </h3>
-        <p className="text-primary-600 font-semibold mb-3">{person.role}</p>
-        <p className="text-slate-600 mb-4 line-clamp-3">{person.bio}</p>
+      <div className="px-2 pb-2">
+        <div className="mb-1">
+          <h3 className="text-sm font-bold group-hover:text-primary-600 transition-colors line-clamp-1">
+            {person.name}
+          </h3>
+          <p className="text-primary-600 text-xs">{person.role}</p>
+        </div>
+        <p className="text-slate-600 text-xs mb-1.5 line-clamp-2">{displayBio}</p>
 
         {/* Social Links */}
-        <div className="flex items-center space-x-3 mb-4">
+        <div className="flex items-center space-x-1 mb-1.5">
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
               title="Email"
             >
-              <Mail size={18} />
+              <Mail size={12} />
             </a>
           )}
           {person.website && (
@@ -58,10 +65,21 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={person.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
               title="Website"
             >
-              <ExternalLink size={18} />
+              <ExternalLink size={12} />
+            </a>
+          )}
+          {person.scholar && (
+            <a
+              href={person.scholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              title="Google Scholar"
+            >
+              <GraduationCap size={12} />
             </a>
           )}
           {person.github && (
@@ -69,10 +87,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://github.com/${person.github}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
               title="GitHub"
             >
-              <Github size={18} />
+              <Github size={12} />
             </a>
           )}
           {person.linkedin && (
@@ -80,10 +98,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://linkedin.com/in/${person.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
               title="LinkedIn"
             >
-              <Linkedin size={18} />
+              <Linkedin size={12} />
             </a>
           )}
           {person.twitter && (
@@ -91,10 +109,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://x.com/${person.twitter}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
               title="X (Twitter)"
             >
-              <X size={18} />
+              <X size={12} />
             </a>
           )}
         </div>
@@ -102,10 +120,10 @@ export default function PersonCard({ person }: PersonCardProps) {
         {/* View Profile Link */}
         <Link
           href={`/people/${person.slug}`}
-          className="inline-flex items-center text-primary-600 font-semibold hover:text-accent-600 transition-colors"
+          className="inline-flex items-center text-xs text-primary-600 font-semibold hover:text-accent-600 transition-colors"
         >
-          View Profile
-          <ExternalLink className="ml-2" size={16} />
+          Profile
+          <ExternalLink className="ml-0.5" size={10} />
         </Link>
       </div>
     </motion.div>

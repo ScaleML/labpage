@@ -5,6 +5,7 @@ bio: "I am a postdoctoral fellow at Princeton Language and Intelligence(PLI), wo
 image: "https://linyongver.github.io/Website/files/self.png"
 website: "https://linyongver.github.io/Website/"
 email: "yong.lin [at] princeton [dot] edu"
+# scholar: ""
 github: "linyongver"
 # linkedin: ""
 twitter: "Yong18850571"

@@ -14,6 +14,7 @@ export interface Person {
   image?: string;
   email?: string;
   website?: string;
+  scholar?: string;
   twitter?: string;
   github?: string;
   linkedin?: string;
