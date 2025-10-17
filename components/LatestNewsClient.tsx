@@ -35,27 +35,39 @@ export default function LatestNewsClient({ news }: LatestNewsClientProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass rounded-xl p-6 hover-lift"
+              className="glass rounded-xl overflow-hidden hover-lift"
             >
-              <div className="flex items-center text-sm text-slate-500 mb-4">
-                <Calendar size={16} className="mr-2" />
-                {new Date(item.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-50 to-primary-50 flex items-center justify-center">
+                <img
+                  src={item.image || '/assets/scaleml-logo.svg'}
+                  alt={item.title}
+                  className={`${item.image ? 'w-full h-full object-cover hover:scale-110' : 'w-2/3 h-2/3 object-contain'} transition-transform duration-500`}
+                />
               </div>
-              <h3 className="text-xl font-bold mb-3 hover:text-primary-600 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-slate-600 mb-4">{item.excerpt}</p>
-              <Link
-                href={`/news/${item.slug}`}
-                className="inline-flex items-center text-primary-600 font-semibold hover:text-accent-600 transition-colors group"
-              >
-                Read more
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-              </Link>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center text-sm text-slate-500 mb-4">
+                  <Calendar size={16} className="mr-2" />
+                  {new Date(item.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </div>
+                <h3 className="text-xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 mb-4 line-clamp-3">{item.excerpt}</p>
+                <Link
+                  href={`/news/${item.slug}`}
+                  className="inline-flex items-center text-primary-600 font-semibold hover:text-accent-600 transition-colors group"
+                >
+                  Read more
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
