@@ -1,6 +1,6 @@
 ---
 name: "Shizhe Diao"
-role: "PhD Student"
+role: "NVIDIA Research Scientist"
 # bio: ""
 image: "https://shizhediao.github.io/figures/me20230102.jpg"
 website: "https://shizhediao.github.io/"

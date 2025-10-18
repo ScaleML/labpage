@@ -1,7 +1,7 @@
 ---
 name: "Rui Pan"
 role: "PhD Student"
-bio: "Research focus on natural language processing and large language models"
+bio: "I am a second-year Ph.D student in computer science, major in optimization and large language model training."
 image: "https://research4pan.github.io/assets/img/my_photo_2024.png"
 website: "https://research4pan.github.io/"
 email: "ruip4@illinois.edu"
