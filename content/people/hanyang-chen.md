@@ -2,12 +2,12 @@
 name: "Hanyang Chen"
 role: "Master Student"
 # bio: ""
-# image: "https://chenluye99.github.io/photo_ycl.jpeg"
-# website: "https://chenluye99.github.io/"
-# email: "ruip4@illinois.edu"
-# scholar: ""
+image: "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=ZzTBk68AAAAJ&citpid=4"
+# website: ""
+email: "hc81@illinois.edu"
+scholar: "https://scholar.google.com/citations?user=ZzTBk68AAAAJ&hl=en&oi=ao"
 # github: ""
 # linkedin: ""
-# twitter: ""
+twitter: "hc81Jeremy"
 ---
 
