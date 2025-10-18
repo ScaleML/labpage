@@ -27,7 +27,7 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={project.slug}
@@ -35,10 +35,10 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group glass rounded-2xl overflow-hidden hover-lift"
+              className="group glass rounded-2xl overflow-hidden hover-lift flex flex-col h-full"
             >
               {project.image && (
-                <div className="relative h-48 overflow-hidden bg-white dark:bg-slate-900 flex items-center justify-center">
+                <div className="relative h-48 flex-shrink-0 overflow-hidden bg-white dark:bg-slate-900 flex items-center justify-center">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -46,11 +46,11 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
                   />
                 </div>
               )}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-4">{project.description}</p>
+                <p className="text-slate-600 dark:text-slate-300 mb-4 flex-grow">{project.description}</p>
                 {project.tags && project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
@@ -65,7 +65,7 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
                 )}
                 <Link
                   href={`/research/${project.slug}`}
-                  className="inline-flex items-center text-primary-600 dark:text-primary-300 font-semibold hover:text-accent-600 dark:hover:text-accent-300 transition-colors"
+                  className="inline-flex items-center text-primary-600 dark:text-primary-300 font-semibold hover:text-accent-600 dark:hover:text-accent-300 transition-colors mt-auto"
                 >
                   Learn more
                   <ExternalLink className="ml-2" size={16} />

@@ -41,7 +41,7 @@ export default function FeaturedShowcase({ projects }: FeaturedShowcaseProps) {
   const currentProject = projects[currentIndex];
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-primary-900 to-accent-900">
+    <section className="relative py-12 overflow-hidden bg-gradient-to-br from-slate-900 via-primary-900 to-accent-900">
       {/* Background Animation */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-grid-pattern"></div>
@@ -53,7 +53,7 @@ export default function FeaturedShowcase({ projects }: FeaturedShowcaseProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-primary-400">Research</span>
@@ -64,7 +64,7 @@ export default function FeaturedShowcase({ projects }: FeaturedShowcaseProps) {
         </motion.div>
 
         {/* Main Showcase */}
-        <div className="relative">
+        <div className="relative min-h-[400px] md:min-h-[450px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -72,7 +72,7 @@ export default function FeaturedShowcase({ projects }: FeaturedShowcaseProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-2 gap-8 items-center"
+              className="grid md:grid-cols-2 gap-8 items-center absolute inset-0"
             >
               {/* Media Section */}
               <div className="relative group">
@@ -195,7 +195,7 @@ export default function FeaturedShowcase({ projects }: FeaturedShowcaseProps) {
 
         {/* Dot Indicators & Controls */}
         {projects.length > 1 && (
-          <div className="flex items-center justify-center gap-6 mt-12">
+          <div className="flex items-center justify-center gap-6 mt-8">
             {/* Dots */}
             <div className="flex gap-2">
               {projects.map((_, index) => (

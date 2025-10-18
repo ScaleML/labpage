@@ -15,10 +15,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group glass rounded-2xl overflow-hidden hover-lift"
+      className="group glass rounded-2xl overflow-hidden hover-lift flex flex-col h-full"
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
+      <div className="relative h-48 flex-shrink-0 overflow-hidden bg-white dark:bg-slate-900 flex items-center justify-center">
         <img
           src={project.image || '/assets/scaleml-logo.svg'}
           alt={project.title}
@@ -32,11 +32,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
           {project.title}
         </h3>
-        <p className="text-slate-600 mb-4 line-clamp-3">{project.description}</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-4 line-clamp-3 flex-grow">{project.description}</p>
 
         {/* Highlights */}
         {project.highlights && project.highlights.length > 0 && (
@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.highlights.map((highlight) => (
               <span
                 key={highlight}
-                className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full font-semibold"
+                className="px-3 py-1 bg-accent-100 text-accent-700 dark:bg-accent-500/20 dark:text-accent-200 text-sm rounded-full font-semibold"
               >
                 {highlight}
               </span>
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200 text-sm rounded-full"
               >
                 {tag}
               </span>
@@ -68,7 +68,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Date */}
         {project.date && (
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             {new Date(project.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -78,7 +78,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         <Link
           href={`/research/${project.slug}`}
-          className="inline-flex items-center text-primary-600 font-semibold hover:text-accent-600 transition-colors group"
+          className="inline-flex items-center text-primary-600 dark:text-primary-300 font-semibold hover:text-accent-600 dark:hover:text-accent-300 transition-colors group mt-auto"
         >
           Learn more
           <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
