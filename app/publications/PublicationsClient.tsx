@@ -52,7 +52,7 @@ export default function PublicationsClient({ publications }: PublicationsClientP
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">Publications</span>
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Our research contributions to the scientific community
           </p>
         </div>
@@ -61,8 +61,8 @@ export default function PublicationsClient({ publications }: PublicationsClientP
         {allTags.length > 1 && (
           <div className="mb-12">
             <div className="flex items-center justify-center mb-4">
-              <Filter className="mr-2 text-slate-600" size={20} />
-              <span className="text-lg font-semibold text-slate-700">Filter by Topic</span>
+              <Filter className="mr-2 text-slate-600 dark:text-slate-300" size={20} />
+              <span className="text-lg font-semibold text-slate-700 dark:text-slate-200">Filter by Topic</span>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {allTags.map(tag => (
@@ -72,7 +72,7 @@ export default function PublicationsClient({ publications }: PublicationsClientP
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                     selectedTag === tag
                       ? 'bg-gradient-to-r from-primary-600 to-accent-600 text-white shadow-lg scale-105'
-                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:border-slate-700'
                   }`}
                 >
                   {tag}
@@ -85,12 +85,16 @@ export default function PublicationsClient({ publications }: PublicationsClientP
         {/* Publications by Year */}
         {years.map((year) => (
           <div key={year} className="mb-12">
-            <h2 className="text-3xl font-bold mb-6 pb-2 border-b-2 border-primary-200">
+            <h2 className="text-3xl font-bold mb-6 pb-2 border-b-2 border-primary-200 dark:border-primary-500/40">
               {year}
             </h2>
             <div className="space-y-6">
               {publicationsByYear[year].map((pub) => (
-                <PublicationCard key={pub.slug} publication={pub} />
+                <PublicationCard
+                  key={pub.slug}
+                  publication={pub}
+                  authorLimit={6}
+                />
               ))}
             </div>
           </div>
@@ -98,10 +102,10 @@ export default function PublicationsClient({ publications }: PublicationsClientP
 
         {filteredPublications.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-xl text-slate-500">No publications found for this filter.</p>
+            <p className="text-xl text-slate-500 dark:text-slate-400">No publications found for this filter.</p>
           </div>
         )}
-      </div>
-    </div>
-  );
+     </div>
+   </div>
+ );
 }

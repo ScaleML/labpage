@@ -4,18 +4,32 @@
 
 @layer base {
   :root {
+    color-scheme: light;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    --body-background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 50%, #e0f2fe 100%);
+    --body-foreground: #0f172a;
+    --glass-background: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --surface-background: #ffffff;
   }
 
   .dark {
+    color-scheme: dark;
     --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --foreground: 210 40% 96%;
+    --body-background: linear-gradient(135deg, #020617 0%, #0f172a 45%, #1e293b 100%);
+    --body-foreground: #e2e8f0;
+    --glass-background: rgba(15, 23, 42, 0.75);
+    --glass-border: rgba(148, 163, 184, 0.35);
+    --surface-background: #0f172a;
   }
 
   body {
-    @apply bg-gradient-to-br from-slate-50 via-white to-blue-50;
-    @apply text-slate-900;
+    background: var(--body-background);
+    color: var(--body-foreground);
+    transition: background 0.4s ease, color 0.2s ease;
+    min-height: 100vh;
   }
 }
 
@@ -25,7 +39,11 @@
   }
 
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+    background-color: var(--glass-background);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 24px 48px -32px rgba(15, 23, 42, 0.45);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .gradient-text {
@@ -34,5 +52,65 @@
 
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl;
+  }
+}
+
+/* Remove borders from code blocks in prose */
+.prose pre {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: white !important;
+}
+
+.prose code {
+  border: none !important;
+}
+
+@layer base {
+  .dark .prose blockquote {
+    border-left-color: rgba(148, 163, 184, 0.5);
+    background-color: rgba(30, 41, 59, 0.6);
+  }
+
+  .dark .prose hr {
+    border-color: rgba(148, 163, 184, 0.4);
+  }
+
+  .dark .prose table thead {
+    background-color: rgba(30, 41, 59, 0.8);
+  }
+
+  .dark .hljs {
+    color: #e2e8f0;
+    background: transparent;
+  }
+
+  .dark .hljs-keyword,
+  .dark .hljs-selector-tag,
+  .dark .hljs-literal,
+  .dark .hljs-title,
+  .dark .hljs-section {
+    color: #ff7b72;
+  }
+
+  .dark .hljs-string,
+  .dark .hljs-doctag,
+  .dark .hljs-regexp,
+  .dark .hljs-template-variable,
+  .dark .hljs-variable {
+    color: #a5d6ff;
+  }
+
+  .dark .hljs-comment,
+  .dark .hljs-quote,
+  .dark .hljs-meta {
+    color: #94a3b8;
+  }
+
+  .dark .hljs-number,
+  .dark .hljs-built_in,
+  .dark .hljs-builtin-name,
+  .dark .hljs-symbol {
+    color: #f9c859;
   }
 }

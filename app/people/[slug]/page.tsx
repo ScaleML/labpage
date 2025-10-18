@@ -6,7 +6,8 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
 import 'katex/dist/katex.min.css';
-import 'highlight.js/styles/github-dark.css';
+import 'highlight.js/styles/github.css';
+import CodeBlock from '@/components/CodeBlock';
 
 export async function generateStaticParams() {
   const people = getPeople();
@@ -29,7 +30,7 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
         <div className="glass rounded-2xl p-8 mb-8">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Image */}
-            <div className="w-48 h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-accent-100 flex-shrink-0">
+            <div className="w-48 h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-500/20 dark:to-accent-500/20 flex-shrink-0">
               {person.image ? (
                 <img
                   src={person.image}
@@ -48,17 +49,17 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
             {/* Info */}
             <div className="flex-1">
               <h1 className="text-4xl font-bold mb-2">{person.name}</h1>
-              <p className="text-xl text-primary-600 font-semibold mb-4">{person.role}</p>
-              <p className="text-slate-600 mb-6">{person.bio}</p>
+              <p className="text-xl text-primary-600 dark:text-primary-300 font-semibold mb-4">{person.role}</p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">{person.bio}</p>
 
               {/* Social Links */}
               <div className="flex flex-wrap gap-3">
                 {person.email && (
                   <a
                     href={`mailto:${person.email}`}
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <Mail size={18} className="mr-2" />
+                    <Mail size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     Email
                   </a>
                 )}
@@ -67,9 +68,9 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                     href={person.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <ExternalLink size={18} className="mr-2" />
+                    <ExternalLink size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     Website
                   </a>
                 )}
@@ -78,9 +79,9 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                     href={person.scholar}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <GraduationCap size={18} className="mr-2" />
+                    <GraduationCap size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     Google Scholar
                   </a>
                 )}
@@ -89,9 +90,9 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                     href={`https://github.com/${person.github}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <Github size={18} className="mr-2" />
+                    <Github size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     GitHub
                   </a>
                 )}
@@ -100,9 +101,9 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                     href={`https://linkedin.com/in/${person.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <Linkedin size={18} className="mr-2" />
+                    <Linkedin size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     LinkedIn
                   </a>
                 )}
@@ -111,9 +112,9 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
                     href={`https://x.com/${person.twitter}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                    className="inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary-100 dark:hover:bg-slate-700 hover:text-primary-600 dark:text-primary-200 transition-colors"
                   >
-                    <X size={18} className="mr-2" />
+                    <X size={18} className="mr-2 text-primary-600 dark:text-primary-200" />
                     X (Twitter)
                   </a>
                 )}
@@ -123,10 +124,13 @@ export default function PersonPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Content */}
-        <div className="glass rounded-2xl p-8 prose prose-lg max-w-none">
+        <div className="glass rounded-2xl p-8 prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-white dark:prose-strong:text-white dark:prose-code:text-primary-200 dark:prose-pre:bg-slate-900 dark:prose-pre:text-slate-200 dark:prose-a:text-primary-300">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeKatex, rehypeHighlight]}
+            components={{
+              code: CodeBlock as any,
+            }}
           >
             {person.content}
           </ReactMarkdown>

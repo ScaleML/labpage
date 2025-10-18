@@ -27,6 +27,7 @@ export interface Project {
   title: string;
   description: string;
   image?: string;
+  video?: string;
   tags?: string[];
   highlights?: string[];
   date?: string;
@@ -61,6 +62,7 @@ export interface Publication {
   authors: string[];
   venue: string;
   year: number;
+  featured?: boolean;
   pdf?: string;
   doi?: string;
   abstract?: string;

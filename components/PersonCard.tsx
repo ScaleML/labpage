@@ -42,22 +42,22 @@ export default function PersonCard({ person }: PersonCardProps) {
       {/* Content */}
       <div className="px-2 pb-2">
         <div className="mb-1">
-          <h3 className="text-sm font-bold group-hover:text-primary-600 transition-colors line-clamp-1">
+          <h3 className="text-sm font-bold group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors line-clamp-1 text-slate-800 dark:text-slate-100">
             {person.name}
           </h3>
-          <p className="text-primary-600 text-xs">{person.role}</p>
+          <p className="text-primary-600 dark:text-primary-300 text-xs">{person.role}</p>
         </div>
-        <p className="text-slate-600 text-xs mb-1.5 line-clamp-2">{displayBio}</p>
+        <p className="text-slate-600 dark:text-slate-300 text-xs mb-1.5 line-clamp-2">{displayBio}</p>
 
         {/* Social Links */}
         <div className="flex items-center space-x-1 mb-1.5">
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="Email"
             >
-              <Mail size={12} />
+              <Mail size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
           {person.website && (
@@ -65,10 +65,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={person.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="Website"
             >
-              <ExternalLink size={12} />
+              <ExternalLink size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
           {person.scholar && (
@@ -76,10 +76,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={person.scholar}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="Google Scholar"
             >
-              <GraduationCap size={12} />
+              <GraduationCap size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
           {person.github && (
@@ -87,10 +87,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://github.com/${person.github}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="GitHub"
             >
-              <Github size={12} />
+              <Github size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
           {person.linkedin && (
@@ -98,10 +98,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://linkedin.com/in/${person.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="LinkedIn"
             >
-              <Linkedin size={12} />
+              <Linkedin size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
           {person.twitter && (
@@ -109,10 +109,10 @@ export default function PersonCard({ person }: PersonCardProps) {
               href={`https://x.com/${person.twitter}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1 bg-slate-100 rounded hover:bg-primary-100 hover:text-primary-600 transition-colors"
+              className="p-1 bg-slate-100 dark:bg-slate-800 rounded hover:bg-primary-100 dark:hover:bg-slate-700 transition-colors"
               title="X (Twitter)"
             >
-              <X size={12} />
+              <X size={12} className="text-slate-600 dark:text-primary-200" />
             </a>
           )}
         </div>
@@ -120,10 +120,10 @@ export default function PersonCard({ person }: PersonCardProps) {
         {/* View Profile Link */}
         <Link
           href={`/people/${person.slug}`}
-          className="inline-flex items-center text-xs text-primary-600 font-semibold hover:text-accent-600 transition-colors"
+          className="inline-flex items-center text-xs text-primary-600 dark:text-primary-300 font-semibold hover:text-accent-600 dark:hover:text-accent-300 transition-colors"
         >
           Profile
-          <ExternalLink className="ml-0.5" size={10} />
+          <ExternalLink className="ml-0.5 text-primary-600 dark:text-primary-300" size={10} />
         </Link>
       </div>
     </motion.div>

@@ -11,7 +11,7 @@ interface FeaturedResearchClientProps {
 
 export default function FeaturedResearchClient({ projects }: FeaturedResearchClientProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="gradient-text">Research</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Explore our cutting-edge projects that are shaping the future of AI
           </p>
         </motion.div>
@@ -38,7 +38,7 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
               className="group glass rounded-2xl overflow-hidden hover-lift"
             >
               {project.image && (
-                <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
+                <div className="relative h-48 overflow-hidden bg-white dark:bg-slate-900 flex items-center justify-center">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -47,16 +47,16 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
                 </div>
               )}
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 mb-4">{project.description}</p>
+                <p className="text-slate-600 dark:text-slate-300 mb-4">{project.description}</p>
                 {project.tags && project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                        className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200 text-sm rounded-full"
                       >
                         {tag}
                       </span>
@@ -65,7 +65,7 @@ export default function FeaturedResearchClient({ projects }: FeaturedResearchCli
                 )}
                 <Link
                   href={`/research/${project.slug}`}
-                  className="inline-flex items-center text-primary-600 font-semibold hover:text-accent-600 transition-colors"
+                  className="inline-flex items-center text-primary-600 dark:text-primary-300 font-semibold hover:text-accent-600 dark:hover:text-accent-300 transition-colors"
                 >
                   Learn more
                   <ExternalLink className="ml-2" size={16} />

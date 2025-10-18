@@ -3,6 +3,7 @@ title: "RLHF Workflow: From Reward Modeling to Online RLHF"
 authors: ["Hanze Dong", "Wei Xiong", "Bo Pang", "Haoxiang Wang", "Han Zhao", "Yingbo Zhou", Nan Jiang, Doyen Sahoo, Caiming Xiong, Tong Zhang]
 venue: "Transactions on Machine Learning Research (TMLR)"
 year: 2024
+featured: true
 pdf: "https://openreview.net/pdf?id=a13aYUU9eU"
 # tags: []
 # highlights: []
@@ -16,5 +17,4 @@ bibtex: |
     year={2024}
   }
 ---
-
 

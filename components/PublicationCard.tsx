@@ -7,10 +7,21 @@ import { useState } from 'react';
 
 interface PublicationCardProps {
   publication: Publication;
+  authorLimit?: number;
 }
 
-export default function PublicationCard({ publication }: PublicationCardProps) {
+export default function PublicationCard({ publication, authorLimit = 3 }: PublicationCardProps) {
   const [copied, setCopied] = useState(false);
+
+  const formatAuthors = (authors: string[]) => {
+    if (!authors || authors.length === 0) {
+      return '';
+    }
+    if (authors.length <= authorLimit) {
+      return authors.join(', ');
+    }
+    return `${authors.slice(0, authorLimit).join(', ')} et al.`;
+  };
 
   const handleCopyBibtex = () => {
     if (publication.bibtex) {
@@ -35,20 +46,26 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
 
         {/* Content */}
         <div className="flex-1">
+          {publication.featured && (
+            <span className="inline-flex items-center px-3 py-1 mb-3 text-xs font-semibold uppercase tracking-wide bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full">
+              Featured
+            </span>
+          )}
+
           <h3 className="text-xl font-bold mb-2 hover:text-primary-600 transition-colors">
             {publication.title}
           </h3>
 
-          <p className="text-slate-600 mb-2">
-            {publication.authors.join(', ')}
+          <p className="text-slate-600 dark:text-slate-300 mb-2">
+            {formatAuthors(publication.authors)}
           </p>
 
-          <p className="text-primary-600 font-semibold mb-3">
+          <p className="text-primary-600 dark:text-primary-300 font-semibold mb-3">
             {publication.venue}, {publication.year}
           </p>
 
           {publication.abstract && (
-            <p className="text-slate-600 mb-4 text-sm line-clamp-2">
+            <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm line-clamp-2">
               {publication.abstract}
             </p>
           )}
@@ -59,7 +76,7 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
               {publication.highlights.map((highlight) => (
                 <span
                   key={highlight}
-                  className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full font-semibold"
+                  className="px-3 py-1 bg-accent-100 text-accent-700 dark:bg-accent-500/20 dark:text-accent-200 text-sm rounded-full font-semibold"
                 >
                   {highlight}
                 </span>
@@ -73,7 +90,7 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
               {publication.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                  className="px-3 py-1 bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200 text-sm rounded-full"
                 >
                   {tag}
                 </span>
@@ -100,7 +117,7 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
                 href={`https://doi.org/${publication.doi}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+                className="inline-flex items-center px-4 py-2 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium"
               >
                 <ExternalLink size={16} className="mr-2" />
                 DOI
@@ -110,7 +127,7 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
             {publication.bibtex && (
               <button
                 onClick={handleCopyBibtex}
-                className="inline-flex items-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+                className="inline-flex items-center px-4 py-2 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium"
               >
                 {copied ? (
                   <>

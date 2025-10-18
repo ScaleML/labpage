@@ -19,7 +19,7 @@ export default function StatsClient({ researchersCount, publicationsCount, newsC
   ];
 
   return (
-    <section className="py-20 bg-white/50">
+    <section className="py-20 bg-white/50 dark:bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
@@ -36,7 +36,7 @@ export default function StatsClient({ researchersCount, publicationsCount, newsC
                 <stat.icon className="text-white" size={32} />
               </div>
               <div className="text-4xl font-bold gradient-text mb-2">{stat.value}</div>
-              <div className="text-slate-600 font-medium">{stat.label}</div>
+              <div className="text-slate-600 dark:text-slate-300 font-medium">{stat.label}</div>
             </motion.div>
             ))}
           </div>
