@@ -18,11 +18,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="group glass rounded-2xl overflow-hidden hover-lift"
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-50 to-primary-50 flex items-center justify-center">
+      <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
         <img
           src={project.image || '/assets/scaleml-logo.svg'}
           alt={project.title}
-          className={`${project.image ? 'w-full h-full object-cover group-hover:scale-110' : 'w-2/3 h-2/3 object-contain'} transition-transform duration-500`}
+          className={`${project.image ? 'w-full h-full object-contain group-hover:scale-110' : 'w-2/3 h-2/3 object-contain'} transition-transform duration-500`}
         />
         {project.featured && (
           <div className="absolute top-4 right-4 px-3 py-1 bg-accent-500 text-white text-sm font-semibold rounded-full">
@@ -37,6 +37,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.title}
         </h3>
         <p className="text-slate-600 mb-4 line-clamp-3">{project.description}</p>
+
+        {/* Highlights */}
+        {project.highlights && project.highlights.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            {project.highlights.map((highlight) => (
+              <span
+                key={highlight}
+                className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full font-semibold"
+              >
+                {highlight}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Tags */}
         {project.tags && project.tags.length > 0 && (

@@ -2,7 +2,8 @@
 title: "LMFlow"
 description: "An Extensible Toolkit for Finetuning and Inference of Large Foundation Models. Large Models for All."
 image: "https://optimalscale.github.io/LMFlow/_static/logo.png"
-tags: ["LLM", "MLSys", "NAACL 2024 Best Demo Award"]
+tags: ["LLM", "MLSys"]
+highlights: ["NAACL 2024 Best Demo Award"]
 date: "2025-07-15"
 featured: true
 website: https://github.com/OptimalScale/LMFlow

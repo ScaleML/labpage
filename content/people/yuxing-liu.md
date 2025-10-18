@@ -5,9 +5,9 @@ bio: "I am a second-year Ph.D. student in computer science at UIUC"
 image: "https://infinity-stars.github.io/images/profile.png"
 website: "https://infinity-stars.github.io/"
 email: "yuxing6@illinois.edu"
-# scholar: ""
+scholar: "https://scholar.google.com/citations?user=ENZKdAUAAAAJ&hl"
 github: "infinity-stars"
-# linkedin: ""
+linkedin: "https://www.linkedin.com/in/yuxing-liu-16141b317/"
 # twitter: ""
 ---
 

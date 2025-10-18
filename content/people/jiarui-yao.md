@@ -7,7 +7,7 @@ website: "https://maxwelljryao.github.io/"
 email: "jiarui14 [at] illinois [dot] edu"
 scholar: "https://scholar.google.com/citations?user=84fexSEAAAAJ&hl=en"
 github: "MaxwellJryao"
-# linkedin: ""
+linkedin: "https://www.linkedin.com/in/jiarui-yao-a07281286/"
 twitter: "ExplainMiracles"
 ---
 

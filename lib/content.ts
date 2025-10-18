@@ -28,6 +28,7 @@ export interface Project {
   description: string;
   image?: string;
   tags?: string[];
+  highlights?: string[];
   date?: string;
   featured?: boolean;
   content: string;
@@ -64,6 +65,8 @@ export interface Publication {
   doi?: string;
   abstract?: string;
   bibtex?: string;
+  tags?: string[];
+  highlights?: string[];
   content: string;
 }
 

@@ -1,13 +1,13 @@
 ---
 name: "Ruida Wang"
 role: "PhD Student"
-# bio: "I am a second-year Ph.D. student in computer science at UIUC"
+bio: "I am a first-year Ph.D. student in Computer Science at UIUC, focusing on formal language applications in natural language generation and making ML systems more compatible with human-level reasoning."
 image: "https://rickyskywalker.github.io/images/profile.jpg"
 website: "https://rickyskywalker.github.io/"
 email: "ruidaw@illinois.edu"
-# scholar: ""
+scholar: "https://scholar.google.com/citations?user=SVAJKx4AAAAJ&hl=en"
 github: "RickySkywalker"
-# linkedin: ""
+linkedin: "https://www.linkedin.com/in/%E7%91%9E%E8%BE%BE-%E7%8E%8B-01961121a/?locale=en_US"
 twitter: "RickyRDWang"
 ---
 

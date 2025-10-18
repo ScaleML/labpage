@@ -6,7 +6,7 @@ image: "https://pchengwang.github.io/images/pengcheng.png"
 website: "https://pchengwang.github.io/"
 email: "pw29@illinois.edu"
 scholar: "https://scholar.google.ca/citations?user=Uag18jcAAAAJ&hl=en"
-# github: ""
+github: "pchengwang"
 # linkedin: ""
 # twitter: ""
 ---

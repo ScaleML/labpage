@@ -7,7 +7,7 @@ website: "https://jh603.github.io/"
 email: "huangjerry128(at)gmail.com"
 # scholar: ""
 github: "jh603"
-# linkedin: ""
+linkedin: "https://www.linkedin.com/in/jerryhuang12"
 twitter: "actuallyjerryh"
 ---
 

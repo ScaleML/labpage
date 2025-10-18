@@ -5,9 +5,9 @@ bio: "I am a second-year Ph.D student in computer science, major in optimization
 image: "https://research4pan.github.io/assets/img/my_photo_2024.png"
 website: "https://research4pan.github.io/"
 email: "ruip4@illinois.edu"
-# scholar: ""
+scholar: "https://scholar.google.com/citations?user=SBPkYz8AAAAJ"
 github: "rui4research"
-# linkedin: ""
+linkedin: "https://www.linkedin.com/in/rui-pan-3a88362a7"
 twitter: "rui4research"
 ---
 

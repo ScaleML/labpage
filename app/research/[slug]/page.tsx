@@ -27,51 +27,46 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
+          <div className="relative h-96 rounded-2xl overflow-hidden mb-8 bg-white flex items-center justify-center">
             {project.image ? (
-              <>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-                  {project.date && (
-                    <div className="flex items-center text-lg">
-                      <Calendar size={20} className="mr-2" />
-                      {new Date(project.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                      })}
-                    </div>
-                  )}
-                </div>
-              </>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-contain"
+              />
             ) : (
-              <div className="bg-gradient-to-br from-slate-50 to-primary-50 flex items-center justify-center w-full h-full">
-                <img
-                  src="/assets/scaleml-logo.svg"
-                  alt={project.title}
-                  className="w-1/2 h-1/2 object-contain"
-                />
+              <img
+                src="/assets/scaleml-logo.svg"
+                alt={project.title}
+                className="w-1/2 h-1/2 object-contain"
+              />
+            )}
+          </div>
+
+          <div className="mb-8">
+            <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
+            {project.date && (
+              <div className="flex items-center text-slate-600">
+                <Calendar size={20} className="mr-2" />
+                {new Date(project.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                })}
               </div>
             )}
           </div>
 
-          {!project.image && (
-            <div className="mb-8">
-              <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-              {project.date && (
-                <div className="flex items-center text-slate-600">
-                  <Calendar size={20} className="mr-2" />
-                  {new Date(project.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                  })}
-                </div>
-              )}
+          {/* Highlights */}
+          {project.highlights && project.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="px-4 py-2 bg-accent-100 text-accent-700 font-semibold rounded-full"
+                >
+                  {highlight}
+                </span>
+              ))}
             </div>
           )}
 

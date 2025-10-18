@@ -5,7 +5,7 @@ bio: "Tong Zhang is a professor of Computer Science at University of Illinois Ur
 image: "https://tongzhang-ml.org/img/personal/personal-image.jpg"
 email: "tongzhang AT tongzhang-ml DOT org"
 website: "https://tongzhang-ml.org/"
-# scholar: ""
+scholar: "https://scholar.google.com/citations?user=LurWtuYAAAAJ&hl=en&oi=ao"
 # github: ""
 # linkedin: ""
 # twitter: ""

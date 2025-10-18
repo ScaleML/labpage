@@ -53,6 +53,34 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
             </p>
           )}
 
+          {/* Highlights */}
+          {publication.highlights && publication.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-3">
+              {publication.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full font-semibold"
+                >
+                  {highlight}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Tags */}
+          {publication.tags && publication.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {publication.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3">
             {publication.pdf && (
