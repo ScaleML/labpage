@@ -1,6 +1,6 @@
 ---
 name: "Xinwei Shen"
-role: "Assitant Professor at University of Washington"
+role: "Assistant Professor at the University of Washington"
 # bio: ""
 image: "https://xinweishen.netlify.app/images/ai-1-circle-1-small.png"
 website: "https://xinweishen.netlify.app/"
